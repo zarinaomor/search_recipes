@@ -37,11 +37,10 @@ router.post('/login', async (req, res) => {
                 req.session.message = '';
                 req.session.logged = true;
 
-                const { _id, name, email } = loggedUser
+                const { _id, username } = loggedUser
                 const responseLoggedUser = {
                     _id: _id,
-                    name: name,
-                    email: email,
+                    username: username
                 }
 
                 res.json({
