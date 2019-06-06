@@ -35,7 +35,7 @@ const recipeController = require('./controllers/recipeController');
 const authController = require('./controllers/authController.js');
 const userController = require('./controllers/userController.js');
 
-// app.use('/api/v1/recipes', recipeController);
+app.use('/api/v1/recipes', recipeController);
 app.use('/auth', authController);
 app.use('/user', userController);
 
