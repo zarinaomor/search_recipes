@@ -30,17 +30,20 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/', async (req, res) => {
+    console.log(req.body)
     try {
-        const foundRecipe = await Recipes.findById(req.params.id);
+        // const foundRecipe = await Recipes.findById(req.params.id);
         const foundUser = await User.findById(req.body.userId)
-        foundRecipe.users.push(foundUser._id)
+        delete req.body.userId
+        foundUser.recipes.push(req.body)
+        foundUser.save();
         console.log(foundUser)
-        console.log(foundRecipe)
-        
+        // console.log(foundRecipe)
+
         res.json({
             status: 200,
-            data: updatedRecipe
+            data: foundUser
         })
     } catch(err) {
         console.log(err);
